@@ -49,7 +49,7 @@
         #app-container { width: 100%; max-width: 420px; min-height: 100vh; position: relative; z-index: 1; padding-bottom: 90px; }
 
         /* ============================================================
-           MOOD BACKGROUND DECOR — pattern + gradients + particles
+           MOOD BACKGROUND DECOR
            ============================================================ */
         #bg-decor {
             position: fixed;
@@ -146,6 +146,33 @@
         @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* ============================================================
+           HOME LOGO — boyish (blue M + ⚡), static
+           ============================================================ */
+        .app-logo { display: flex; flex-direction: column; align-items: center; gap: 5px; margin: 4px 0 10px; }
+        .logo-icon {
+            position: relative;
+            width: 62px; height: 62px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #90CAF9 0%, #42A5F5 100%);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 20px rgba(66, 165, 245, 0.35);
+            border: 3px solid rgba(255,255,255,0.65);
+        }
+        .logo-m {
+            color: #fff; font-family: 'Fredoka', sans-serif;
+            font-size: 2.3rem; font-weight: 600; line-height: 1;
+            margin-top: -5px; text-shadow: 0 2px 4px rgba(30, 100, 180, 0.4);
+        }
+        .logo-bow {
+            position: absolute; top: -13px; right: -15px;
+            font-size: 1.4rem; transform: rotate(18deg);
+        }
+        .logo-word {
+            font-family: 'Fredoka', sans-serif; font-size: 1.2rem;
+            color: var(--text-brown); letter-spacing: 2px;
+        }
+
         /* --- Components --- */
         .btn {
             background: var(--white);
@@ -217,7 +244,7 @@
 
         /* --- Home --- */
         .header-greeting { font-family: 'Fredoka', sans-serif; font-size: 1.6rem; margin-bottom: 5px; color: var(--text-brown); }
-        .bunny-home { text-align: center; margin: 30px 0; position: relative; }
+        .bunny-home { text-align: center; margin: 25px 0; position: relative; }
         .bunny-wrapper { position: relative; display: inline-block; }
         .reaction-emoji { position: absolute; top: 0; right: -20px; font-size: 2.5rem; animation: float 2s infinite ease-in-out; }
 
@@ -414,8 +441,18 @@
 
     <!-- 3. Home -->
     <div id="home-screen" class="screen">
+        <!-- Boyish static logo -->
+        <div class="app-logo">
+            <div class="logo-icon">
+                <span class="logo-bow">⚡</span>
+                <span class="logo-m">M</span>
+            </div>
+            <div class="logo-word">Moodsie</div>
+        </div>
+
         <div class="header-greeting" id="header-greeting">Hey, champ! 💪</div>
         <p style="color:var(--text-grey);">How are you feeling today?</p>
+        <p id="today-hint" style="display:none; font-size:0.85rem; color:var(--text-grey); margin-top:4px;"></p>
 
         <div id="home-bunny-container" class="bunny-home">
             <div class="bunny-wrapper">
@@ -468,7 +505,6 @@
             </div>
             <div id="extra-status" style="text-align: center; font-size: 0.8rem; margin-top: 8px; color: var(--text-grey); min-height: 1em;"></div>
 
-            <!-- Hidden file input + photo preview -->
             <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="onPhotoPicked(event)">
             <div id="photo-preview" style="display:none;">
                 <img id="photo-preview-img" alt="Photo preview">
@@ -634,7 +670,7 @@
     let currentDate = new Date();
     let tempRating = 0;
     let appReady = false;
-    let tempPhoto = null; // data URL of the picked photo
+    let tempPhoto = null;
     const extras = { photo: false, music: false };
 
     /* --- Helpers --- */
@@ -685,6 +721,7 @@
         try { loadData(); } catch (e) {}
         try { validateStreak(); } catch (e) {}
         try { updateGreeting(); } catch (e) {}
+        try { updateTodayHint(); } catch (e) {}
         try { initMoodGrid(); } catch (e) {}
         try { initRating(); } catch (e) {}
         try { initAccessories(); } catch (e) {}
@@ -784,7 +821,7 @@
         if (tabId === 'profile') updateStats();
     }
 
-    /* --- Home & Mood Logic --- */
+    /* --- Home --- */
     function updateGreeting() {
         const h = new Date().getHours();
         let g = 'Hey, night owl! 🌙';
@@ -792,6 +829,19 @@
         else if (h >= 12 && h < 17) g = 'Good afternoon, legend! ⚡';
         else if (h >= 17 && h < 21) g = 'Good evening, boss! 🌆';
         document.getElementById('header-greeting').innerText = g;
+    }
+
+    function updateTodayHint() {
+        const el = document.getElementById('today-hint');
+        if (!el) return;
+        const entry = appState.entries.find(e => e.date === todayISO());
+        if (entry) {
+            const mood = MOODS.find(m => m.id === entry.moodId);
+            el.innerHTML = `Today's flower: <span style="font-size:1.1rem;">${entry.flower || (mood ? mood.flower : '🌱')}</span>${entry.photo ? ' 📷' : ''}`;
+            el.style.display = 'block';
+        } else {
+            el.style.display = 'none';
+        }
     }
 
     function initMoodGrid() {
@@ -854,23 +904,19 @@
     }
 
     function toggleExtra(type) {
-        if (type === 'photo') { pickPhoto(); return; } // 📸 opens the gallery/camera now
+        if (type === 'photo') { pickPhoto(); return; }
         extras[type] = !extras[type];
         updateExtraStatus();
     }
 
-    /* ============================================================
-       PHOTO PICKING (from phone gallery or camera)
-       The image is auto-resized + compressed so localStorage
-       doesn't blow up (~100KB per photo instead of ~5MB).
-       ============================================================ */
+    /* --- Photo Picking --- */
     function pickPhoto() {
         document.getElementById('photo-input').click();
     }
 
     function onPhotoPicked(e) {
         const file = e.target.files && e.target.files[0];
-        e.target.value = ''; // allow re-picking the same file
+        e.target.value = '';
         if (!file) return;
         if (!file.type || !file.type.startsWith('image/')) {
             showToast('That is not an image 😅');
@@ -891,7 +937,7 @@
         reader.onload = function () {
             const img = new Image();
             img.onload = function () {
-                const maxDim = 800; // longest side after resize
+                const maxDim = 800;
                 let w = img.width, h = img.height;
                 if (w > maxDim || h > maxDim) {
                     if (w >= h) { h = Math.round(h * maxDim / w); w = maxDim; }
@@ -931,14 +977,13 @@
 
         let ok = saveData();
         if (!ok && entry.photo) {
-            // Storage full → at least keep the memory without the photo
             entry.photo = null;
             const idx = appState.entries.findIndex(e => e.date === todayStr);
             if (idx >= 0) appState.entries[idx].photo = null;
             ok = saveData();
         }
 
-        // Reset for next check-in
+        // Reset the check-in form
         document.getElementById('journal-note').value = '';
         document.getElementById('extra-status').innerText = '';
         extras.photo = false; extras.music = false;
@@ -955,8 +1000,10 @@
         document.body.className = '';
         setDecor(null);
 
-        showToast(ok ? 'Saved to your garden! 🌱⚡' : 'Saved here — but storage is full 😅');
-        setTimeout(() => switchTab('garden'), 900);
+        // ✅ STAY on home page (no switching to garden)
+        updateTodayHint();
+        showToast(ok ? 'Saved! ⚡' : 'Saved here — but storage is full 😅');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function checkStreak(dateStr) {
@@ -980,8 +1027,7 @@
             const el = document.createElement('div');
             el.className = 'garden-spot';
             el.title = prettyDate(entry.date);
-            el.innerText = mood ? mood.flower : '🌱';
-            if (entry.photo) el.innerText = '📷'; // flowers with a photo become camera flowers
+            el.innerText = entry.photo ? '📷' : (mood ? mood.flower : '🌱');
             el.onclick = () => showEntryDetail(entry);
             container.appendChild(el);
         });
@@ -1146,6 +1192,7 @@
             if (document.getElementById('garden-screen').classList.contains('active')) renderGarden();
             if (document.getElementById('journal-screen').classList.contains('active')) renderJournal();
             if (document.getElementById('calendar-screen').classList.contains('active')) renderCalendar();
+            updateTodayHint();
             showToast('Memory deleted.');
         }
     }
