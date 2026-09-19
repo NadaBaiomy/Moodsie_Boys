@@ -1,0 +1,13 @@
+{
+  "name": "Moodsie ⚡",
+  "short_name": "Moodsie ⚡",
+  "description": "A tiny space for all your feelings",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#EEF4FA",
+  "theme_color": "#64B5F6",
+  "icons": [
+    { "src": "icon-boy.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-boy.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
