@@ -52,7 +52,6 @@
 
         #app-container { width: 100%; max-width: 420px; min-height: 100vh; position: relative; z-index: 1; padding-bottom: 90px; }
 
-        /* --- Background Decor --- */
         #bg-decor {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -147,7 +146,6 @@
         @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Home Logo --- */
         .app-logo { display: flex; flex-direction: column; align-items: center; gap: 5px; margin: 4px 0 10px; }
         .logo-icon {
             position: relative;
@@ -172,9 +170,6 @@
             color: var(--text-brown); letter-spacing: 2px;
         }
 
-        /* ============================================================
-           DAILY MESSAGE CARD 💌 (Arabic, RTL)
-           ============================================================ */
         #daily-message-card {
             margin-top: 20px;
             background: linear-gradient(135deg, #BBDEFB 0%, #64B5F6 100%);
@@ -197,9 +192,6 @@
         }
         .dm-hint { font-size: 0.7rem; opacity: 0.75; margin-top: 10px; }
 
-        /* ============================================================
-           LOCK SCREEN 🔒 (blue)
-           ============================================================ */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1500; display: none;
@@ -242,7 +234,6 @@
         }
         #lock-forgot span { text-decoration: underline; cursor: pointer; }
 
-        /* --- Components --- */
         .btn {
             background: var(--white);
             color: var(--primary-pink);
@@ -285,7 +276,6 @@
         .screen { display: none; padding: 20px; animation: fadeIn 0.4s ease; }
         .screen.active { display: block; }
 
-        /* --- Splash --- */
         #splash-screen {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             height: 100vh; text-align: center; background: var(--primary-pink);
@@ -307,11 +297,9 @@
         }
         @keyframes pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
 
-        /* --- Onboarding --- */
         .onboarding-slide { text-align: center; padding: 40px 20px; }
         .onboarding-emoji { font-size: 100px; margin-bottom: 20px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
 
-        /* --- Home --- */
         .header-greeting { font-family: 'Fredoka', sans-serif; font-size: 1.6rem; margin-bottom: 5px; color: var(--text-brown); }
         .bunny-home { text-align: center; margin: 25px 0; position: relative; }
         .bunny-wrapper { position: relative; display: inline-block; }
@@ -328,7 +316,6 @@
         .mood-emoji { font-size: 1.8rem; }
         .mood-label { font-size: 1rem; font-family: 'Fredoka', sans-serif; color: var(--text-brown); }
 
-        /* --- Check-in --- */
         .needs-options { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         textarea {
             width: 100%; height: 100px; padding: 15px;
@@ -355,7 +342,6 @@
             font-size: 1rem; cursor: pointer; user-select: none;
         }
 
-        /* --- Garden --- */
         .garden-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 20px 0; }
         .garden-spot {
             aspect-ratio: 1; background: rgba(255,255,255,0.4); border-radius: 50%;
@@ -366,14 +352,12 @@
         .garden-spot:hover { transform: scale(1.1) rotate(5deg); background: var(--white); }
         .garden-bunny-area { text-align: center; padding: 20px; animation: float 6s infinite; }
 
-        /* --- Calendar --- */
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; margin-top: 10px; }
         .cal-day { padding: 8px 2px; border-radius: 12px; font-size: 0.9rem; position: relative; cursor: pointer; }
         .cal-header { font-weight: 700; color: var(--text-grey); padding: 5px; font-family: 'Fredoka', sans-serif; }
         .cal-mood { font-size: 1.1rem; display: block; }
         .cal-day.today { background: var(--primary-pink); color: var(--white); font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
 
-        /* --- Journal --- */
         .journal-item { border-left: 5px solid var(--primary-pink); margin-bottom: 15px; cursor: pointer; }
         .journal-date { font-size: 0.85rem; color: var(--text-grey); font-family: 'Fredoka', sans-serif; }
         .journal-mood { float: right; font-size: 1.5rem; }
@@ -382,7 +366,6 @@
             border-radius: 16px; margin-top: 10px; display: block;
         }
 
-        /* --- Bunny / Accessories --- */
         .profile-header { text-align: center; padding: 20px; }
         .profile-stats { display: flex; justify-content: space-around; margin: 20px 0; }
         .stat-item { text-align: center; }
@@ -402,7 +385,6 @@
         .acc-btn.selected { border-color: var(--primary-pink); background: #EEF6FF; transform: scale(1.08); }
         .acc-label { font-size: 0.7rem; margin-top: 4px; color: var(--text-grey); font-family: 'Fredoka', sans-serif; }
 
-        /* --- Settings rows --- */
         .setting-row {
             display: flex; justify-content: space-between; align-items: center;
             background: var(--white); border-radius: 16px; padding: 14px 16px;
@@ -410,7 +392,6 @@
         }
         .setting-state { font-family: 'Fredoka', sans-serif; font-size: 0.85rem; color: var(--primary-pink); }
 
-        /* --- Navigation --- */
         .nav-bar {
             position: fixed; bottom: 0; width: 100%; max-width: 420px;
             background: var(--white); display: flex; justify-content: space-around;
@@ -424,7 +405,6 @@
         .nav-item.active { color: var(--primary-pink); transform: translateY(-5px); }
         .nav-label { font-family: 'Fredoka', sans-serif; font-size: 0.6rem; margin-top: 4px; }
 
-        /* --- Toast --- */
         #toast {
             visibility: hidden; min-width: 250px; background-color: var(--text-brown); color: #fff;
             text-align: center; border-radius: 50px; padding: 14px; position: fixed;
@@ -434,7 +414,6 @@
         }
         #toast.show { visibility: visible; opacity: 1; bottom: 100px; }
 
-        /* --- Modal --- */
         .modal {
             display: none; position: fixed; z-index: 200; left: 0; top: 0;
             width: 100%; height: 100%; background-color: rgba(0,0,0,0.4);
@@ -453,10 +432,8 @@
             box-shadow: 0 6px 18px rgba(0,0,0,0.15);
         }
 
-        /* --- Search --- */
         .search-bar { width: 100%; padding: 12px 20px; border-radius: 50px; border: none; margin-bottom: 20px; background: var(--white); color: var(--text-brown); font-family: 'Quicksand', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.03); outline: none; }
 
-        /* --- Chart --- */
         .chart-container { display: flex; align-items: flex-end; gap: 6px; margin-top: 10px; }
         .chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
         .bar-track { height: 110px; width: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
@@ -472,7 +449,6 @@
 
 <div id="app-container">
 
-    <!-- 1. Splash -->
     <div id="splash-screen" onclick="skipSplash()">
         <svg class="bunny-svg" viewBox="0 0 100 100">
             <ellipse class="bunny-ear" cx="30" cy="30" rx="12" ry="28" />
@@ -492,7 +468,6 @@
         <p id="skip-hint">tap anywhere to skip ⚡</p>
     </div>
 
-    <!-- 2. Onboarding -->
     <div id="onboarding-screen" class="screen">
         <div class="onboarding-slide">
             <span class="onboarding-emoji">🎮</span>
@@ -515,7 +490,6 @@
         </div>
     </div>
 
-    <!-- 3. Home -->
     <div id="home-screen" class="screen">
         <div class="app-logo">
             <div class="logo-icon">
@@ -556,7 +530,6 @@
             </div>
         </div>
 
-        <!-- 💌 رسالة اليوم -->
         <div id="daily-message-card" onclick="showBonusMessage()">
             <div class="dm-title">💌 رسالة اليوم</div>
             <div id="daily-message-text"></div>
@@ -597,7 +570,6 @@
         </div>
     </div>
 
-    <!-- 4. Garden -->
     <div id="garden-screen" class="screen">
         <h2>My Garden 🌷</h2>
         <p style="font-size: 0.9rem; color:var(--text-grey);">Tap a flower to see the memory.</p>
@@ -607,7 +579,6 @@
         </div>
     </div>
 
-    <!-- 5. Calendar -->
     <div id="calendar-screen" class="screen">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom:20px;">
             <button class="btn btn-small" onclick="changeMonth(-1)">◀</button>
@@ -621,14 +592,12 @@
         <div class="calendar-grid" id="calendar-days"></div>
     </div>
 
-    <!-- 6. Journal -->
     <div id="journal-screen" class="screen">
         <h2>Journal 📖</h2>
         <input type="text" class="search-bar" placeholder="Search memories..." onkeyup="searchJournal(this.value)">
         <div id="journal-list"></div>
     </div>
 
-    <!-- 7. Bunny -->
     <div id="bunny-screen" class="screen">
         <h2>My Bunny 🐰</h2>
         <div class="profile-header">
@@ -654,7 +623,6 @@
         <div class="accessories-grid" id="accessories-list"></div>
     </div>
 
-    <!-- 8. Profile -->
     <div id="profile-screen" class="screen">
         <h2>Me ⚡</h2>
         <div class="card">
@@ -689,7 +657,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="nav-bar">
         <div class="nav-item active" onclick="switchTab('home')">🏠 <span class="nav-label">Home</span></div>
         <div class="nav-item" onclick="switchTab('garden')">🌷 <span class="nav-label">Garden</span></div>
@@ -701,7 +668,6 @@
 
 </div>
 
-<!-- Modals -->
 <div id="detail-modal" class="modal" onclick="if(event.target === this) closeModal()">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -709,7 +675,6 @@
     </div>
 </div>
 
-<!-- 🔒 Lock Screen -->
 <div id="lock-screen">
     <div class="lock-card">
         <div id="lock-emoji">🔒</div>
@@ -740,7 +705,6 @@
 <div id="toast"></div>
 
 <script>
-    /* --- Data & Config --- */
     const MOODS = [
         { id: 'tired', emoji: '😴', label: 'Tired', theme: 'theme-tired', flower: '🌙', response: 'Looks like you need a little rest. 🌙' },
         { id: 'good', emoji: '😎', label: 'Good', theme: 'theme-good', flower: '🌻', response: 'You are glowing today! ✨' },
@@ -776,7 +740,6 @@
     };
     const DEFAULT_DECOR = ['⚡', '⭐', '🚀', '🌙'];
 
-    /* 💌 رسائل يومية بالعربي — جو ولادي */
     const DAILY_MESSAGES = [
         "قوم يا وحش، النهاردة يومك 💪",
         "الصعب النهاردة هيبقى ذكرى بكرة ⚡",
@@ -839,7 +802,6 @@
     let swReg = null;
     const extras = { photo: false, music: false };
 
-    /* --- Helpers --- */
     function toISODate(d) {
         return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     }
@@ -857,9 +819,6 @@
         return 'p' + (h >>> 0).toString(36);
     }
 
-    /* ============================================================
-       💌 DAILY MESSAGE
-       ============================================================ */
     function getMessageOfDay() {
         if (appState.msgOffset === null || appState.msgOffset === undefined) {
             appState.msgOffset = Math.floor(Math.random() * DAILY_MESSAGES.length);
@@ -881,24 +840,19 @@
         el.innerText = m;
     }
 
-    /* ============================================================
-       🔔 NOTIFICATIONS (sw-boy.js + periodic sync)
-       ============================================================ */
     async function initServiceWorker() {
-        if (!('serviceWorker' in navigator)) return;
+        if (!('serviceWorker' in navigator)) return null;
         try {
-            swReg = await navigator.serviceWorker.register('sw-boy.js');
-            if ('periodicSync' in swReg) {
-                try {
-                    await swReg.periodicSync.register('daily-msg', { minInterval: 24 * 60 * 60 * 1000 });
-                } catch (e) {}
-            }
-        } catch (e) {}
+            return await navigator.serviceWorker.register('sw-boy.js');
+        } catch (e) { return null; }
     }
 
+    /* ============================================================
+       🔔 NOTIFICATIONS — النسخة المعدلة: بيكشف المشاكل بدل السكوت
+       ============================================================ */
     async function toggleDailyNotif() {
         if (!('Notification' in window) || !('serviceWorker' in navigator)) {
-            showToast('Not supported on this browser 😅');
+            showToast('Not supported 😅 افتحي التطبيق من الأيقونة');
             return;
         }
         if (appState.notifEnabled) {
@@ -911,26 +865,52 @@
             showToast('Daily notifications off 🔕');
             return;
         }
+        showToast('ثواني بنجهزها... ⏳');
+
         let perm = Notification.permission;
         if (perm === 'default') perm = await Notification.requestPermission();
-        if (perm !== 'granted') { showToast('Notifications blocked 🙈'); return; }
+        if (perm !== 'granted') { showToast('الإذن مرفوض 🙈 شوكي إعدادات الآيفون'); return; }
 
-        await initServiceWorker();
-        try { swReg = swReg || (await navigator.serviceWorker.ready); } catch (e) {}
-        appState.notifEnabled = true;
-        saveData();
-        updateNotifStateUI();
-        showToast('Daily messages on! 🔔');
-
-        // إشعار فوري كتجربة
+        // تسجيل الـ SW — بمهلة زمنية عشان ميفضلش معلق أبدًا
+        let reg = null;
         try {
-            if (swReg) {
-                await swReg.showNotification('Moodsie ⚡', {
-                    body: getMessageOfDay(),
-                    icon: 'icon-boy.svg',
-                    tag: 'moodsie-test'
-                });
+            reg = await Promise.race([
+                navigator.serviceWorker.register('sw-boy.js'),
+                new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 12000))
+            ]);
+        } catch (e) { reg = null; }
+
+        if (!reg) {
+            showToast('⚠️ مش لاقي ملف sw-boy.js — شوكي اسمه في GitHub');
+            return;
+        }
+        swReg = reg;
+
+        try {
+            const readyReg = await Promise.race([
+                navigator.serviceWorker.ready,
+                new Promise((_, rej) => setTimeout(() => rej(new Error('t')), 12000))
+            ]);
+            if (readyReg) swReg = readyReg;
+        } catch (e) {}
+
+        try {
+            if ('periodicSync' in swReg) {
+                await swReg.periodicSync.register('daily-msg', { minInterval: 24 * 60 * 60 * 1000 });
             }
+        } catch (e) {}
+
+        appState.notifEnabled = true;
+        const saved = saveData();
+        updateNotifStateUI();
+        showToast(saved ? 'Daily messages on! 🔔' : 'On — بس الستوريدج مليان 😅');
+
+        try {
+            await swReg.showNotification('Moodsie ⚡', {
+                body: getMessageOfDay(),
+                icon: 'icon-boy.svg',
+                tag: 'moodsie-test'
+            });
         } catch (e) {}
     }
 
@@ -939,9 +919,7 @@
         if (el) el.innerText = appState.notifEnabled ? 'On 🔔' : 'Off';
     }
 
-    /* ============================================================
-       🔒 PIN LOCK
-       ============================================================ */
+    /* --- PIN LOCK --- */
     let lockMode = 'unlock';
     let lockBuffer = '';
     let lockPending = null;
@@ -1072,7 +1050,6 @@
         if (el) el.innerText = needsPin() ? 'On 🔒' : 'Off';
     }
 
-    /* Re-lock after being away 5+ seconds */
     let hiddenAt = 0;
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
@@ -1084,7 +1061,6 @@
         }
     });
 
-    /* --- Background Decor --- */
     function setDecor(moodId) {
         const decor = document.getElementById('bg-decor');
         if (!decor) return;
@@ -1114,9 +1090,6 @@
         }
     }
 
-    /* ============================================================
-       BOOT
-       ============================================================ */
     (function boot() {
         try { loadData(); } catch (e) {}
         try { validateStreak(); } catch (e) {}
@@ -1129,7 +1102,7 @@
         try { updatePinStateUI(); } catch (e) {}
         try { updateNotifStateUI(); } catch (e) {}
         try { setDecor(null); } catch (e) {}
-        if (appState.notifEnabled) { try { initServiceWorker(); } catch (e) {} }
+        if (appState.notifEnabled) { try { initServiceWorker().then(r => { if (r) swReg = r; }); } catch (e) {} }
         setTimeout(checkAppReady, 1800);
     })();
 
@@ -1158,7 +1131,6 @@
         if (needsPin()) openLock('unlock');
     }
 
-    /* --- Persistence --- */
     function saveData() {
         let ok = true;
         try { localStorage.setItem('moodsieBoyData', JSON.stringify(appState)); } catch (e) { ok = false; }
@@ -1178,7 +1150,6 @@
         }
     }
 
-    /* --- Streak validation --- */
     function validateStreak() {
         if (!appState.lastCheckIn) return;
         const y = new Date(); y.setDate(y.getDate() - 1);
@@ -1189,7 +1160,6 @@
         }
     }
 
-    /* --- Onboarding --- */
     let onboardingStep = 0;
     document.getElementById('next-onboard').addEventListener('click', () => {
         const slides = document.querySelectorAll('.onboarding-slide');
@@ -1209,7 +1179,6 @@
         switchTab('home');
     });
 
-    /* --- Navigation --- */
     function switchTab(tabId) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById(tabId + '-screen').classList.add('active');
@@ -1226,7 +1195,6 @@
         if (tabId === 'profile') updateStats();
     }
 
-    /* --- Home --- */
     function updateGreeting() {
         const h = new Date().getHours();
         let g = 'Hey, night owl! 🌙';
@@ -1289,7 +1257,6 @@
         showModal('✨ Surprise Activity', `<div style="font-size:1.3rem; padding:20px;">${act}</div>`);
     }
 
-    /* --- Check-in --- */
     function initRating() {
         document.querySelectorAll('.star').forEach(s => {
             s.addEventListener('click', () => {
@@ -1314,7 +1281,6 @@
         updateExtraStatus();
     }
 
-    /* --- Photo Picking --- */
     function pickPhoto() {
         document.getElementById('photo-input').click();
     }
@@ -1417,7 +1383,6 @@
         appState.lastCheckIn = dateStr;
     }
 
-    /* --- Garden --- */
     function renderGarden() {
         const container = document.getElementById('garden-grid');
         if (!appState.entries.length) {
@@ -1436,7 +1401,6 @@
         });
     }
 
-    /* --- Calendar --- */
     function renderCalendar() {
         const year = currentDate.getFullYear(), month = currentDate.getMonth();
         document.getElementById('cal-month-year').innerText =
@@ -1465,7 +1429,6 @@
         else showToast('No memory saved this day 🌱');
     }
 
-    /* --- Journal --- */
     function renderJournal() {
         const list = document.getElementById('journal-list');
         const sorted = appState.entries.slice().reverse();
@@ -1489,7 +1452,6 @@
         });
     }
 
-    /* --- Bunny & Accessories --- */
     function initAccessories() {
         const container = document.getElementById('accessories-list');
         container.innerHTML = ACC_LIST.map(a => `
@@ -1517,7 +1479,6 @@
         el.style.transform = acc.shift ? 'translateX(-100%)' : 'translateX(-50%)';
     }
 
-    /* --- Stats --- */
     function updateStats() {
         document.getElementById('stat-flowers').innerText = appState.entries.length;
         document.getElementById('stat-streak').innerText = appState.streak;
@@ -1569,7 +1530,6 @@
         }).join('');
     }
 
-    /* --- Utils --- */
     function showEntryDetail(entry) {
         if (!entry) return;
         const mood = MOODS.find(m => m.id === entry.moodId);
